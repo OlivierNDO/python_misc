@@ -11,7 +11,6 @@ save_path = '.../fa12_cleaned.csv'
 
 # Define Data Reading & Processing Functions
 #####################################################################
-
 # Read Unstructured Text File, Return as List of Lists
 def read_text_garbage(garbage_path):
     with open(garbage_path, 'r') as in_file:
@@ -27,16 +26,6 @@ def get_column_pos(dat_path, start_col, len_col):
     return col_positions
     
 # Separate Columns Based on Positions in Layout File
-def col_pos_sep(dat_list, col_pos_tuples):
-    outer_list = []
-    for dat in dat_list:
-        inner_list = []
-        for cpt in col_pos_tuples:
-            inner_list.append(dat[cpt[0]:cpt[1]])
-        outer_list.append(inner_list)
-    return outer_list
-            
-
 def col_pos_sep(dat_list, col_pos_tuples):
     outer_list = []
     for dat in dat_list:
