@@ -5,9 +5,9 @@ import time, csv, pickle, re
 
 # Data
 #####################################################################
-file_path = 'C:/Users/user/Documents/school/practicum/FA12_Data.txt'
-layout_path = 'C:/Users/user/Documents/school/practicum/fa12_Layout.txt'
-save_path = 'C:/Users/user/Documents/school/practicum/fa12_cleaned.csv'
+file_path = '.../FA12_Data.txt'
+layout_path = '.../fa12_Layout.txt'
+save_path = '.../fa12_cleaned.csv'
 
 # Define Data Reading & Processing Functions
 #####################################################################
@@ -48,7 +48,6 @@ def col_pos_sep(dat_list, col_pos_tuples):
                 inner_list.append(dat[cpt[0]:cpt[1]])
         outer_list.append(inner_list)
     return outer_list
-            
 
 # Run 'read_text_garbage', 'get_column_pos', and 'col_pos_sep' Functions Iteratively
 def proc_aggregate(layout_path, file_path):
@@ -66,5 +65,3 @@ df = proc_aggregate(layout_path, file_path)
 # Save Cleaned Data to csv File
 ##################################################################### 
 df.to_csv(save_path)
-
-
