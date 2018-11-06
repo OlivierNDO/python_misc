@@ -13,7 +13,7 @@ import sklearn.preprocessing
 
 # Import Data
 ####################################################################
-folder_path = "C:/Users/user/Desktop/plasticc/"
+folder_path = "...."
 train = pd.read_csv(folder_path + "training_set.csv")
 train_meta = pd.read_csv(folder_path + "training_set_metadata.csv")
 
