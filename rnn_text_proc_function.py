@@ -13,9 +13,9 @@ from keras.preprocessing.sequence import pad_sequences
 
 # User Input
 ##############################################################################
-glove_txt_file = 'D:/glove/glove.840B.300d.txt'
-train_file = 'D:/quora/data/train.csv'
-test_file = 'D:/quora/data/test.csv'
+glove_txt_file = '********/glove.840B.300d.txt'
+train_file = ''********/train.csv'
+test_file = ''********/test.csv'
 
 # Define Functions
 ##############################################################################
