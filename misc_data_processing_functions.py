@@ -1,10 +1,38 @@
-# Lists and Strings
+# Lists
 ##############################################################################
 def unnest_list_of_lists(LOL):
     """unnest list of lists"""
     import itertools
     return list(itertools.chain.from_iterable(LOL))
 
+def possible_list_combinations(list_of_lists, list_names):
+    """return pandas dataframe with unique combinations of elements among lists"""
+    import itertools, pandas as pd
+    return pd.DataFrame(list(itertools.product(*list_of_lists)), columns = list_names)
+    
+def sample_possible_list_combinations(list_of_lists, list_names, sample_n):
+    """return sample of possible combinations of elements among lists
+       * dependency on possible_list_combinations() function *"""
+    import itertools, pandas as pd, random
+    product = possible_list_combinations(list_of_lists = list_of_lists,
+                                         list_names = list_names) 
+    product['primary_key'] = [i for i in range(product.shape[0])]
+    sample_primary_keys = random.sample(product['primary_key'], sample_n)
+    sample_product = product[product['primary_key'].isin(sample_primary_keys)]
+    print('returning ' + str(int(sample_n)) + ' of ' + str(int(product.shape[0])) + ' possible combinations')
+    return sample_product
+
+def index_slice_list(lst, indices):
+    """slice list by list of indices"""
+    from operator import itemgetter
+    list_slice = itemgetter(*indices)(lst)
+    if len(indices) == 1:
+        return [list_slice]
+    else:
+        return list(list_slice)
+
+# Strings
+##############################################################################
 def rem_multiple_substr(your_string, your_removals):
     """remove list of substrings ('your_removals') from a string ('your_string')"""
     your_new_string = your_string
@@ -74,7 +102,8 @@ def seconds_to_time(sec):
     return HH + ':' + MM + ':' + SS + ' (hh:mm:ss)'
 
 def sec_to_time_elapsed(end_tm, start_tm, return_time = False):
-    """apply seconds_to_time function to start and end times"""
+    """apply seconds_to_time function to start and end times
+       * dependency on seconds_to_time() function *"""
     import numpy as np
     sec_elapsed = (np.float64(end_tm) - np.float64(start_tm))
     if return_time:
