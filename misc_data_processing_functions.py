@@ -30,6 +30,12 @@ def index_slice_list(lst, indices):
         return [list_slice]
     else:
         return list(list_slice)
+    
+ def inner_join_pandas_list(pandas_list, join_on):
+    """merges list of pandas dataframes"""
+    import pandas as pd
+    from functools import reduce
+    return reduce(lambda a, b: pd.merge(a, b, on = join_on), pandas_list)
 
 # Strings
 ##############################################################################
