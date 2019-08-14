@@ -136,6 +136,6 @@ def print_progress(iterable_object, iter_num, print_every,
     if (non_zero_check and divisible_check):
         print("{tm} ---------- {a} of {b} ({p}) complete".\
               format(tm = time.strftime(time_format),
-                     a = str(i),
+                     a = str(iter_num),
                      b = str(iter_len),
                      p = percent_progress))
