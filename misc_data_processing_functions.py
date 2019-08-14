@@ -116,3 +116,26 @@ def sec_to_time_elapsed(end_tm, start_tm, return_time = False):
         return seconds_to_time(sec_elapsed)
     else:
         print('Execution Time: ' + seconds_to_time(sec_elapsed))
+        
+def print_progress(iterable_object, iter_num, print_every,
+                   time_format = '%a, %d %b %Y %H:%M:%S'):
+    """
+    While looping through <iterable_object> where current iteration = <iter_num>,
+    print time and progress every <iter_num> iterations
+    Args:
+        iterable_object: the list or array in your for-loop
+        iter_num: the current iteration in the loop
+        print_every: how many iterations to print progress message
+    Dependencies:
+        'time' package
+    """
+    iter_len = len(iterable_object)
+    non_zero_check = (iter_num / print_every) > 0 
+    divisible_check = (float(iter_num / print_every) == float(iter_num // print_every))
+    percent_progress = str(round((iter_num / iter_len) * 100,1)) + "%"
+    if (non_zero_check and divisible_check):
+        print("{tm} ---------- {a} of {b} ({p}) complete".\
+              format(tm = time.strftime(time_format),
+                     a = str(i),
+                     b = str(iter_len),
+                     p = percent_progress))
